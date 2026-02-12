@@ -9,57 +9,56 @@
     <style>
         * { font-family: 'Inter', sans-serif; }
         
-        /* 🌈 渐变背景图 - 柔和微纹理 */
+        /* 🌟 你的照片作为全屏背景 - 无遮罩版 */
         body {
-            background: linear-gradient(145deg, #f6f8fc 0%, #edf0f7 100%);
+            background: url('https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/df297f60792f2e8baabaae38dc7f7898.jpg') no-repeat center center fixed;
+            background-size: cover;
             position: relative;
             min-height: 100vh;
         }
         
-        /* 叠加一层极浅的网格纹理，增加细节 */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(rgba(80, 100, 150, 0.03) 1px, transparent 1px);
-            background-size: 24px 24px;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        /* 所有内容层都在背景之上 */
+        /* 所有内容直接在背景上 */
         .content {
             position: relative;
             z-index: 1;
         }
         
+        /* 🃏 卡片半透明毛玻璃，背景清晰可见 */
         .link-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 18px;
             padding: 1rem 1.25rem;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 0.75rem;
             text-decoration: none;
-            color: inherit;
+            color: #1e293b;
         }
         .link-card:hover {
-            background: rgba(255, 255, 255, 0.95);
-            border-color: rgba(148, 163, 184, 0.3);
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 0.6);
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px -8px rgba(30, 64, 175, 0.12);
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.15);
         }
         
+        /* 统计卡片同样半透明 */
+        .stat-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        /* 头像保持不透明但有光晕 */
         .avatar {
             width: 64px;
             height: 64px;
@@ -71,10 +70,11 @@
             color: white;
             font-size: 28px;
             font-weight: 700;
-            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.25);
-            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.6);
         }
         
+        /* 标签半透明 */
         .badge {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(4px);
@@ -86,37 +86,53 @@
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            border: 1px solid rgba(255,255,255,0.8);
+            border: 1px solid rgba(255,255,255,0.4);
         }
         
-        .stat-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.6);
+        /* 所有卡片容器都半透明 */
+        .bg-white, .bg-white/70, .bg-white/80, .bg-gradient-to-r {
+            background: rgba(255, 255, 255, 0.7) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
         }
         
+        /* 按钮样式优化 */
+        .rounded-full.font-medium {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        /* 页脚链接 */
         .footer-link {
-            color: #6b7280;
+            color: #4b5563;
             font-size: 0.8rem;
             text-decoration: none;
             padding: 0.25rem 0.75rem;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.3);
         }
         .footer-link:hover {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* 文字颜色加深，保证在透明白色上清晰 */
+        .text-gray-900 {
+            color: #0f172a !important;
+        }
+        .text-gray-600 {
+            color: #334155 !important;
         }
     </style>
 </head>
 <body class="py-6 px-4 antialiased">
     
-    <!-- 所有内容放在content层，位于背景之上 -->
+    <!-- 所有内容在背景之上 -->
     <div class="content max-w-2xl mx-auto">
         
-        <!-- ===== 头部：头像 + 昵称 + 简介 ===== -->
+        <!-- ===== 头部 ===== -->
         <div class="flex flex-col items-center text-center mt-4 mb-6">
             <div class="avatar mb-3">
                 宇
@@ -125,7 +141,7 @@
                 @宇少
                 <span class="bg-green-100/80 backdrop-blur-sm text-green-700 text-xs px-2 py-0.5 rounded-full border border-white/50">⚡ 已上线</span>
             </h1>
-            <p class="text-gray-600 text-sm mt-1 max-w-xs">
+            <p class="text-gray-700 text-sm mt-1 max-w-xs font-medium">
                 全栈练习生 · 把踩过的坑铺成路
             </p>
             <div class="flex gap-2 mt-3">
@@ -136,143 +152,143 @@
         </div>
 
         <!-- ===== 统计卡片 ===== -->
-        <div class="flex justify-between stat-card rounded-2xl p-5 mb-6 border border-white/60 shadow-sm">
+        <div class="flex justify-between stat-card shadow-sm mb-6">
             <div class="text-center flex-1">
                 <div class="text-xl font-bold text-gray-900">3</div>
-                <div class="text-xs text-gray-500 mt-0.5">文章</div>
+                <div class="text-xs text-gray-600 mt-0.5">文章</div>
             </div>
-            <div class="text-center flex-1 border-x border-white/40">
+            <div class="text-center flex-1 border-x border-white/30">
                 <div class="text-xl font-bold text-gray-900">2.1k</div>
-                <div class="text-xs text-gray-500 mt-0.5">总阅读</div>
+                <div class="text-xs text-gray-600 mt-0.5">总阅读</div>
             </div>
             <div class="text-center flex-1">
                 <div class="text-xl font-bold text-gray-900">12</div>
-                <div class="text-xs text-gray-500 mt-0.5">工具推荐</div>
+                <div class="text-xs text-gray-600 mt-0.5">工具推荐</div>
             </div>
         </div>
 
-        <!-- ===== 导航分类标题 ===== -->
+        <!-- ===== 导航标题 ===== -->
         <div class="flex items-center gap-2 mb-3 mt-4">
             <div class="h-4 w-1 bg-blue-500 rounded-full"></div>
-            <span class="text-xs font-semibold text-gray-500 tracking-wider">📌 常用工具 · 点击直达</span>
+            <span class="text-xs font-semibold text-white/90 bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full">📌 常用工具 · 点击直达</span>
         </div>
 
-        <!-- ===== Link3 风格卡片聚合 ===== -->
+        <!-- ===== 工具卡片 ===== -->
         <div class="mb-6">
-            <!-- 梯子冲浪工具 -->
+            <!-- 梯子 -->
             <a href="https://www.nfsq.us/#/register?code=Msqx2m4g" class="link-card group">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 bg-blue-50/80 backdrop-blur-sm rounded-xl flex items-center justify-center text-blue-600 text-lg">🌊</div>
+                    <div class="w-9 h-9 bg-blue-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-blue-600 text-lg border border-white/30">🌊</div>
                     <div>
                         <div class="font-semibold text-gray-900">梯子冲浪工具</div>
-                        <div class="text-xs text-gray-500">稳定 · 高速 · 不限设备</div>
+                        <div class="text-xs text-gray-600">稳定 · 高速 · 不限设备</div>
                     </div>
                 </div>
-                <div class="text-blue-500 text-sm bg-blue-50/80 backdrop-blur-sm px-3 py-1.5 rounded-full font-medium border border-white/40">
+                <div class="text-blue-600 text-sm bg-white/90 px-3 py-1.5 rounded-full font-medium border border-white/50 shadow-sm">
                     访问 →
                 </div>
             </a>
             
-            <!-- UC网盘下载 -->
+            <!-- UC -->
             <a href="https://drive.uc.cn/s/8df281ec6dd54?public=1" class="link-card group">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 bg-orange-50/80 backdrop-blur-sm rounded-xl flex items-center justify-center text-orange-600 text-lg">📦</div>
+                    <div class="w-9 h-9 bg-orange-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-orange-600 text-lg border border-white/30">📦</div>
                     <div>
                         <div class="font-semibold text-gray-900">UC网盘下载</div>
-                        <div class="text-xs text-gray-500">大文件 · 不限速</div>
+                        <div class="text-xs text-gray-600">大文件 · 不限速</div>
                     </div>
                 </div>
-                <div class="text-orange-500 text-sm bg-orange-50/80 backdrop-blur-sm px-3 py-1.5 rounded-full font-medium border border-white/40">
+                <div class="text-orange-600 text-sm bg-white/90 px-3 py-1.5 rounded-full font-medium border border-white/50 shadow-sm">
                     下载 →
                 </div>
             </a>
             
-            <!-- 夸克网盘 -->
+            <!-- 夸克 -->
             <a href="https://pan.quark.cn/s/4a67f42952f3" class="link-card group">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 bg-purple-50/80 backdrop-blur-sm rounded-xl flex items-center justify-center text-purple-600 text-lg">☁️</div>
+                    <div class="w-9 h-9 bg-purple-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-purple-600 text-lg border border-white/30">☁️</div>
                     <div>
                         <div class="font-semibold text-gray-900">夸克网盘</div>
-                        <div class="text-xs text-gray-500">资源同步 · 在线解压</div>
+                        <div class="text-xs text-gray-600">资源同步 · 在线解压</div>
                     </div>
                 </div>
-                <div class="text-purple-500 text-sm bg-purple-50/80 backdrop-blur-sm px-3 py-1.5 rounded-full font-medium border border-white/40">
+                <div class="text-purple-600 text-sm bg-white/90 px-3 py-1.5 rounded-full font-medium border border-white/50 shadow-sm">
                     提取 →
                 </div>
             </a>
             
-            <!-- 百度下载 -->
+            <!-- 百度 -->
             <a href="https://pan.baidu.com/s/1YRSttwYqv3smFsTSql4u5A?pwd=42fy" class="link-card group">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 bg-blue-100/80 backdrop-blur-sm rounded-xl flex items-center justify-center text-blue-700 text-lg">🗂️</div>
+                    <div class="w-9 h-9 bg-blue-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-blue-700 text-lg border border-white/30">🗂️</div>
                     <div>
                         <div class="font-semibold text-gray-900">百度下载</div>
-                        <div class="text-xs text-gray-500">网盘直链 · 提速脚本</div>
+                        <div class="text-xs text-gray-600">网盘直链 · 提速脚本</div>
                     </div>
                 </div>
-                <div class="text-blue-600 text-sm bg-blue-100/80 backdrop-blur-sm px-3 py-1.5 rounded-full font-medium border border-white/40">
+                <div class="text-blue-700 text-sm bg-white/90 px-3 py-1.5 rounded-full font-medium border border-white/50 shadow-sm">
                     高速 →
                 </div>
             </a>
             
-            <!-- 迅雷下载 -->
+            <!-- 迅雷 -->
             <a href="https://pan.xunlei.com/s/VONV1pd7HvwnZNMYqmDDTcRQA1?pwd=fnux#" class="link-card group">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 bg-yellow-50/80 backdrop-blur-sm rounded-xl flex items-center justify-center text-yellow-600 text-lg">⚡</div>
+                    <div class="w-9 h-9 bg-yellow-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-yellow-600 text-lg border border-white/30">⚡</div>
                     <div>
                         <div class="font-semibold text-gray-900">迅雷下载</div>
-                        <div class="text-xs text-gray-500">磁力 · 种子 · 敏感资源</div>
+                        <div class="text-xs text-gray-600">磁力 · 种子 · 敏感资源</div>
                     </div>
                 </div>
-                <div class="text-yellow-600 text-sm bg-yellow-50/80 backdrop-blur-sm px-3 py-1.5 rounded-full font-medium border border-white/40">
+                <div class="text-yellow-600 text-sm bg-white/90 px-3 py-1.5 rounded-full font-medium border border-white/50 shadow-sm">
                     加速 →
                 </div>
             </a>
         </div>
 
-        <!-- ===== 个人博客入口 ===== -->
+        <!-- ===== 博客入口 ===== -->
         <div class="mt-8 mb-6">
             <div class="flex items-center gap-2 mb-3">
                 <div class="h-4 w-1 bg-gray-400 rounded-full"></div>
-                <span class="text-xs font-semibold text-gray-500 tracking-wider">📝 我的原创</span>
+                <span class="text-xs font-semibold text-white/90 bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full">📝 我的原创</span>
             </div>
             
-            <div class="bg-gradient-to-r from-white/70 to-white/50 backdrop-blur-md rounded-2xl p-5 border border-white/60 flex justify-between items-center">
+            <div class="bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-white/30 flex justify-between items-center shadow-lg">
                 <div>
-                    <span class="text-xs text-gray-600 bg-white/60 px-2 py-1 rounded-full border border-white/80">最新 🔥</span>
+                    <span class="text-xs text-gray-700 bg-white/90 px-2 py-1 rounded-full border border-white/50">最新 🔥</span>
                     <div class="font-bold text-gray-900 mt-2 text-lg">从404到yushao.me</div>
-                    <div class="text-sm text-gray-600 mt-0.5">博客折腾日记 · 绿锁亮了</div>
+                    <div class="text-sm text-gray-700 mt-0.5">博客折腾日记 · 绿锁亮了</div>
                 </div>
-                <div class="bg-blue-500/90 backdrop-blur-sm text-white px-4 py-2.5 rounded-xl text-sm font-medium shadow-sm border border-white/30">
+                <div class="bg-blue-500/90 backdrop-blur-sm text-white px-4 py-2.5 rounded-xl text-sm font-medium shadow-md border border-white/30 hover:bg-blue-600 transition">
                     阅读 →
                 </div>
             </div>
         </div>
 
-        <!-- ===== 加入社群 ===== -->
-        <div class="bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-white/60 mt-4 flex items-center justify-between">
+        <!-- ===== QQ频道 ===== -->
+        <div class="bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-white/30 mt-4 flex items-center justify-between shadow-lg">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-indigo-50/80 backdrop-blur-sm rounded-xl flex items-center justify-center text-indigo-600 text-xl">💬</div>
+                <div class="w-10 h-10 bg-indigo-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-indigo-600 text-xl border border-white/30">💬</div>
                 <div>
                     <div class="font-semibold text-gray-900">加入QQ频道</div>
-                    <div class="text-xs text-gray-500">技术交流 · 每日分享</div>
+                    <div class="text-xs text-gray-600">技术交流 · 每日分享</div>
                 </div>
             </div>
-          <a href="https://pd.qq.com/s/9czm8o309?b=9" target="_blank" class="text-indigo-600 text-sm bg-indigo-50/80 backdrop-blur-sm px-4 py-2 rounded-full font-medium border border-white/40 hover:bg-indigo-100/80 transition">
-    马上加入 →
-</a>
+            <a href="https://pd.qq.com/s/9czm8o309?b=9" target="_blank" class="text-indigo-600 text-sm bg-white/90 px-4 py-2 rounded-full font-medium border border-white/50 shadow-sm hover:bg-white transition">
+                马上加入 →
+            </a>
         </div>
 
-        <!-- ===== 极简页脚 ===== -->
-        <div class="mt-12 pt-6 border-t border-white/40 text-center text-xs text-gray-500 flex flex-wrap justify-center gap-4">
-            <a href="#" class="hover:text-gray-800 bg-white/30 backdrop-blur-sm px-3 py-1 rounded-full">© 宇少</a>
-            <a href="#" class="hover:text-gray-800 bg-white/30 backdrop-blur-sm px-3 py-1 rounded-full">yushao.me</a>
-            <a href="#" class="hover:text-gray-800 bg-white/30 backdrop-blur-sm px-3 py-1 rounded-full">RSS</a>
-            <a href="#" class="hover:text-gray-800 bg-white/30 backdrop-blur-sm px-3 py-1 rounded-full">GitHub</a>
-            <a href="#" class="hover:text-gray-800 bg-white/30 backdrop-blur-sm px-3 py-1 rounded-full">🔒 证书有效</a>
+        <!-- ===== 页脚 ===== -->
+        <div class="mt-12 pt-6 border-t border-white/30 text-center text-xs text-gray-600 flex flex-wrap justify-center gap-4">
+            <a href="#" class="hover:text-gray-900 bg-white/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30">© 宇少</a>
+            <a href="#" class="hover:text-gray-900 bg-white/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30">yushao.me</a>
+            <a href="#" class="hover:text-gray-900 bg-white/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30">RSS</a>
+            <a href="#" class="hover:text-gray-900 bg-white/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30">GitHub</a>
+            <a href="#" class="hover:text-gray-900 bg-white/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30">🔒 证书有效</a>
         </div>
 
-        <!-- ===== 手机底部留白 ===== -->
+        <!-- ===== 底部留白 ===== -->
         <div class="h-10"></div>
     </div>
 </body>
