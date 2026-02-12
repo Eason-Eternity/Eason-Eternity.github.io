@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>从404到yushao.me · 宇少</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: url('https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/df297f60792f2e8baabaae38dc7f7898.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            position: relative;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        }
+        .article-content {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 28px;
+            padding: 2rem;
+            line-height: 1.8;
+            color: #1e293b;
+        }
+        .article-content h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+        .article-content h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+        .article-content p {
+            margin-bottom: 1.2rem;
+            color: #334155;
+        }
+        .article-content ul {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+            list-style-type: disc;
+        }
+        .article-content li {
+            margin-bottom: 0.5rem;
+            color: #334155;
+        }
+        .article-content a {
+            color: #2563eb;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .article-content a:hover {
+            color: #1d4ed8;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 0.6rem 1.5rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1e293b;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .back-btn:hover {
+            background: white;
+            transform: translateX(-2px);
+        }
+        .footer-item {
+            color: #4b5563;
+            font-size: 0.8rem;
+            text-decoration: none;
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.2s ease;
+        }
+        .footer-item:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <!-- 返回按钮 -->
+        <div class="mb-6">
+            <a href="https://www.yushao.me" class="back-btn">
+                ← 返回首页
+            </a>
+        </div>
+
+        <!-- 文章内容 -->
+        <article class="article-content mb-8">
+            <h1>从404到yushao.me</h1>
+            <div class="text-xs text-gray-600 mb-6 flex items-center gap-3 pb-4 border-b border-white/30">
+                <span>📅 2026.02.12</span>
+                <span>🔖 折腾日记</span>
+                <span>⏱️ 阅读约5分钟</span>
+            </div>
+            
+            <p>昨天下午，我开始搭这个博客。我以为很简单——GitHub Pages 嘛，传个 HTML 不就完了？</p>
+            
+            <p>然后我遇到了：</p>
+            <ul>
+                <li>❌ 第一个域名 zavelle.eu.cc，被墙了，国内全红</li>
+                <li>❌ 第二个域名 yushao.xin，阿里云强制2年起购，坑</li>
+                <li>❌ DNS 配了 A 记录又删，CNAME 加了又改</li>
+                <li>❌ GitHub Pages 证书卡了 6 个小时，一直 InvalidDNSError</li>
+                <li>❌ 手机能开、电脑不能开；WiFi 能开、流量不能开</li>
+            </ul>
+
+            <p>凌晨1点，我躺在沙发上想：要不算了？8块钱买个域名，扔在那里也不亏。</p>
+
+            <p>但我又想起那句话——「把踩过的坑铺成路」。域名被墙就换，DNS 不认就上 Cloudflare，证书不发就反复删了加、加了删。</p>
+
+            <p>凌晨3点，GitHub Pages 那个绿色的勾出现了。</p>
+
+            <p>早上10点我再看，居然能行」。</p>
+
+            <h2>🛠️ 我用了哪些工具</h2>
+            <ul>
+                <li><strong>域名</strong>：yushao.me（阿里云，首年1元）</li>
+                <li><strong>托管</strong>：GitHub Pages（免费）</li>
+                <li><strong>DNS</strong>：Cloudflare（免费，解决污染）</li>
+                <li><strong>图床</strong>：GitHub 仓库当图床（免费，无限）</li>
+                <li><strong>背景图</strong>：自己拍的照片</li>
+            </ul>
+
+            <h2>🎯 给也想搭博客的你</h2>
+            <ul>
+                <li>不要用 .eu.cc 这种冷门后缀，被墙了查都不知道去哪查</li>
+                <li>国内注册的域名，DNS 最好迁到 Cloudflare，移动联通不会乱缓存</li>
+                <li>GitHub Pages 绑定域名，先用 www，证书下来再搞 @</li>
+                <li>证书卡住不要慌，删了重加，最多等 30 分钟</li>
+                <li>手机打不开 ≠ 你的问题，让朋友改 DNS 到 8.8.8.8 就行</li>
+            </ul>
+
+            <p>现在你看到的这个页面，就是昨天那个 404 变的。</p>
+            
+            <p class="mt-8 pt-4 border-t border-white/30 text-sm text-gray-600">—— 宇少，2026.02.12 下午</p>
+        </article>
+
+        <!-- 页脚 -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mt-8">
+            <a href="https://www.yushao.me" class="footer-item">← 回首页</a>
+            <a href="#" class="footer-item">🐙 GitHub</a>
+            <a href="#" class="footer-item">🔒 证书有效</a>
+        </div>
+        <div class="text-center mt-6 text-xs text-white/70 bg-black/10 backdrop-blur-sm py-2 px-4 rounded-full mx-auto w-fit">
+            ✦ 宇少的数字网站 · 2026 ✦
+        </div>
+        <div class="h-12"></div>
+    </div>
+</body>
+</html>
