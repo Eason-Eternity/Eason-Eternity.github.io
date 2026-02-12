@@ -2,513 +2,168 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>宇少 · 导航</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宇少 · 储藏室</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <style>
-        * { 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fa;
         }
         
-        body {
-            background: url('https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/df297f60792f2e8baabaae38dc7f7898.jpg') no-repeat center center fixed;
-            background-size: cover;
-            min-height: 100vh;
-            position: relative;
+        /* 轮播动画 - 10张照片，每张3.5秒，总时长35秒 */
+        @keyframes slide {
+            0%, 7% { opacity: 1; }
+            8%, 97% { opacity: 0; }
+            100% { opacity: 1; }
         }
         
-        .content {
-            position: relative;
-            z-index: 2;
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 1.5rem 1rem;
+        .carousel-item {
+            animation: slide 35s infinite;
         }
         
-        /* 🪟 柔和毛玻璃 - 降低对比度 */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-        }
-        
-        /* ✨ 标题 - 柔和深灰 */
-        .hero-title {
-            font-family: 'Playfair Display', 'Inter', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            color: #2c3e50;
-            text-shadow: 0 2px 8px rgba(255,255,255,0.3);
-            margin-bottom: 0.25rem;
-            line-height: 1.1;
-        }
-        
-        .hero-sub {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #4a5568;
-            margin-top: 0.25rem;
-        }
-        
-        .avatar {
-            width: 76px;
-            height: 76px;
-            border-radius: 22px;
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 20px -8px rgba(0,0,0,0.08);
-            margin-bottom: 1rem;
-            transition: all 0.2s ease;
-        }
-        
-        .avatar:hover {
-            transform: scale(1.02);
-            border-color: rgba(255,255,255,0.9);
-        }
-        
-        /* 🏷️ 标签 - 柔和灰 */
-        .badge {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            color: #4a5568;
-            padding: 0.35rem 1rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            letter-spacing: 0.3px;
-        }
-        
-        /* 统计卡片 - 更透更柔 */
-        .stat-card {
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 20px;
-            padding: 1.25rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
-        }
-        
-        .stat-number {
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: #2c3e50;
-            line-height: 1;
-        }
-        
-        .stat-label {
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: #5a6a7a;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-            margin-top: 0.25rem;
-        }
-        
-        /* 链接卡片 - 柔和版 */
-        .link-card {
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 20px;
-            padding: 1rem 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.75rem;
-            text-decoration: none;
-            color: #2c3e50;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
-        }
-        
-        .link-card:hover {
-            background: rgba(255, 255, 255, 0.6);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px -8px rgba(0,0,0,0.05);
-        }
-        
-        /* 图标容器 - 柔和 */
-        .icon-box {
-            width: 42px;
-            height: 42px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.2s ease;
-            color: #4a5568;
-        }
-        
-        .link-card:hover .icon-box {
-            background: rgba(255, 255, 255, 0.6);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .link-card .font-semibold {
-            color: #2c3e50;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        
-        .link-card .text-xs {
-            color: #5a6a7a;
-        }
-        
-        /* 按钮 - 柔和 */
-        .btn-soft {
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0.45rem 1.3rem;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #4a5568;
-            transition: all 0.2s ease;
-            letter-spacing: 0.2px;
-        }
-        
-        .btn-soft:hover {
-            background: rgba(255, 255, 255, 0.75);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-1px);
-        }
-        
-        /* 分类标题 - 柔和灰条 */
-        .section-title {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.35rem 1.3rem;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 100px;
-            color: #3a4a5a;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        
-        /* 原创卡片 - 特别柔和 */
-        .original-card {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 24px;
-            padding: 1.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
-        }
-        
-        .latest-badge {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(4px);
-            color: #e67e22;
-            padding: 0.2rem 1rem;
-            border-radius: 100px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-        
-        .post-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-top: 0.5rem;
-            margin-bottom: 0.25rem;
-            letter-spacing: -0.01em;
-        }
-        
-        .post-desc {
-            font-size: 0.85rem;
-            color: #5a6a7a;
-        }
-        
-        .read-btn {
-            background: rgba(52, 152, 219, 0.2);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(52, 152, 219, 0.2);
-            color: #2980b9;
-            padding: 0.6rem 1.6rem;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-        
-        .read-btn:hover {
-            background: rgba(52, 152, 219, 0.3);
-            border-color: rgba(52, 152, 219, 0.3);
-            transform: translateY(-1px);
-        }
-        
-        /* 社群卡片 - 柔和 */
-        .community-card {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 24px;
-            padding: 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 1rem;
-        }
-        
-        /* 页脚 - 柔和 */
-        .footer-item {
-            color: #5a6a7a;
-            font-size: 0.75rem;
-            text-decoration: none;
-            padding: 0.35rem 1.1rem;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.2s ease;
-            font-weight: 500;
-        }
-        
-        .footer-item:hover {
-            background: rgba(255, 255, 255, 0.6);
-            color: #2c3e50;
-        }
-        
-        .divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 1.8rem 0 1.5rem;
-        }
-        
-        .status-badge {
-            background: rgba(46, 204, 113, 0.2);
-            backdrop-filter: blur(4px);
-            color: #27ae60;
-            padding: 0.2rem 0.9rem;
-            border-radius: 100px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            border: 1px solid rgba(46, 204, 113, 0.2);
-        }
-        
-        .copyright {
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1.5rem;
-            border-radius: 100px;
-            font-size: 0.7rem;
-            color: #5a6a7a;
-            display: inline-block;
-            margin-top: 1.5rem;
-        }
+        .carousel-item:nth-child(1) { animation-delay: 0s; }
+        .carousel-item:nth-child(2) { animation-delay: 3.5s; }
+        .carousel-item:nth-child(3) { animation-delay: 7s; }
+        .carousel-item:nth-child(4) { animation-delay: 10.5s; }
+        .carousel-item:nth-child(5) { animation-delay: 14s; }
+        .carousel-item:nth-child(6) { animation-delay: 17.5s; }
+        .carousel-item:nth-child(7) { animation-delay: 21s; }
+        .carousel-item:nth-child(8) { animation-delay: 24.5s; }
+        .carousel-item:nth-child(9) { animation-delay: 28s; }
+        .carousel-item:nth-child(10) { animation-delay: 31.5s; }
     </style>
 </head>
-<body>
-    <div class="content">
-        
-        <!-- ===== 头部 - 柔和灰 ===== -->
-        <div class="flex flex-col items-center text-center mb-8">
-            <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/4d4c13c2e179aeb1ebc50562fac31275957560ee/aabcb4cc94314e40637436d9306ae373.jpg" 
-                 alt="宇少" 
-                 class="avatar">
-            
-            <div class="hero-title">@宇少</div>
-            <div class="flex items-center gap-2 mt-1 mb-2">
-                <span class="status-badge">⚡ 已上线</span>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="max-w-5xl w-full">
+        <!-- 简洁标志区 -->
+        <div class="text-center mb-16">
+            <div class="inline-block px-4 py-1 bg-black/5 backdrop-blur-sm rounded-full text-sm text-gray-600 mb-4">
+                ⚡ 今日更新
             </div>
-            <p class="hero-sub">
-                全栈练习生 · 把踩过的坑铺成路
+            <h1 class="text-5xl font-light tracking-tight text-gray-900 mb-3">
+                宇少的<span class="font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">储藏室</span>
+            </h1>
+            <p class="text-gray-500 text-base tracking-wide">
+                收集一些有用的东西
             </p>
-            <div class="flex flex-wrap gap-2 mt-4">
-                <span class="badge">📍 重庆</span>
-                <span class="badge">🔗 yushao.me</span>
-                <span class="badge">🕒 2026</span>
-            </div>
         </div>
 
-        <!-- ===== 统计卡片 ===== -->
-        <div class="stat-card flex justify-between items-center mb-8">
-            <div class="text-center flex-1 py-1">
-                <div class="stat-number">3</div>
-                <div class="stat-label">文章</div>
-            </div>
-            <div class="text-center flex-1 border-x border-white/20 py-1">
-                <div class="stat-number">2.1k</div>
-                <div class="stat-label">总阅读</div>
-            </div>
-            <div class="text-center flex-1 py-1">
-                <div class="stat-number">12</div>
-                <div class="stat-label">工具推荐</div>
-            </div>
-        </div>
-
-        <!-- ===== 常用工具 ===== -->
-        <div class="flex items-center justify-between mb-4">
-            <span class="section-title">📌 常用工具</span>
-            <span class="text-xs text-gray-600 bg-white/30 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/30">点击直达</span>
-        </div>
-
-        <div class="mb-6">
-            <!-- 梯子 -->
-            <a href="https://www.nfsq.us/#/register?code=Msqx2m4g" class="link-card">
-                <div class="flex items-center gap-3.5">
-                    <div class="icon-box">🌊</div>
-                    <div>
-                        <div class="font-semibold">梯子冲浪工具</div>
-                        <div class="text-xs">稳定 · 高速 · 不限设备</div>
+        <!-- 两大入口卡片 - 完全横排 -->
+        <div class="flex flex-row gap-6 mb-8 w-full">
+            <!-- 下载区 - 左 -->
+            <a href="#" class="group flex-1 bg-white rounded-3xl p-8 transition-all duration-300 hover:shadow-xl border border-gray-100/80 hover:border-gray-200 flex flex-col">
+                <div class="flex items-center justify-between w-full mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-5xl transform transition-transform group-hover:scale-110">📦</span>
+                        <span class="text-2xl font-semibold text-gray-800 group-hover:text-gray-900">下载区</span>
                     </div>
+                    <span class="text-xs font-medium px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full">24个资源</span>
                 </div>
-                <div class="btn-soft">
-                    访问 →
-                </div>
-            </a>
-            
-            <!-- UC -->
-            <a href="https://drive.uc.cn/s/8df281ec6dd54?public=1" class="link-card">
-                <div class="flex items-center gap-3.5">
-                    <div class="icon-box">📦</div>
-                    <div>
-                        <div class="font-semibold">UC网盘下载</div>
-                        <div class="text-xs">大文件 · 不限速</div>
-                    </div>
-                </div>
-                <div class="btn-soft">
-                    下载 →
+                <div class="flex items-center justify-between w-full mt-1">
+                    <span class="text-gray-500 text-sm">网盘·工具·直链</span>
+                    <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900 flex items-center">
+                        进入储藏格 
+                        <span class="ml-1.5 transform transition-transform group-hover:translate-x-1">→</span>
+                    </span>
                 </div>
             </a>
-            
-            <!-- 夸克 -->
-            <a href="https://pan.quark.cn/s/4a67f42952f3" class="link-card">
-                <div class="flex items-center gap-3.5">
-                    <div class="icon-box">☁️</div>
-                    <div>
-                        <div class="font-semibold">夸克网盘</div>
-                        <div class="text-xs">资源同步 · 在线解压</div>
+
+            <!-- 更新公告 - 右 -->
+            <a href="#" class="group flex-1 bg-white rounded-3xl p-8 transition-all duration-300 hover:shadow-xl border border-gray-100/80 hover:border-gray-200 flex flex-col">
+                <div class="flex items-center justify-between w-full mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-5xl transform transition-transform group-hover:scale-110">📋</span>
+                        <span class="text-2xl font-semibold text-gray-800 group-hover:text-gray-900">更新公告</span>
                     </div>
+                    <span class="text-xs font-medium px-3 py-1.5 bg-amber-50 text-amber-600 rounded-full">4条新</span>
                 </div>
-                <div class="btn-soft">
-                    提取 →
-                </div>
-            </a>
-            
-            <!-- 百度 -->
-            <a href="https://pan.baidu.com/s/1YRSttwYqv3smFsTSql4u5A?pwd=42fy" class="link-card">
-                <div class="flex items-center gap-3.5">
-                    <div class="icon-box">🗂️</div>
-                    <div>
-                        <div class="font-semibold">百度下载</div>
-                        <div class="text-xs">网盘直链 · 提速脚本</div>
-                    </div>
-                </div>
-                <div class="btn-soft">
-                    高速 →
-                </div>
-            </a>
-            
-            <!-- 迅雷 -->
-            <a href="https://pan.xunlei.com/s/VONV1pd7HvwnZNMYqmDDTcRQA1?pwd=fnux#" class="link-card">
-                <div class="flex items-center gap-3.5">
-                    <div class="icon-box">⚡</div>
-                    <div>
-                        <div class="font-semibold">迅雷下载</div>
-                        <div class="text-xs">磁力 · 种子 · 敏感资源</div>
-                    </div>
-                </div>
-                <div class="btn-soft">
-                    加速 →
+                <div class="flex items-center justify-between w-full mt-1">
+                    <span class="text-gray-500 text-sm">动态·折腾·记录</span>
+                    <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900 flex items-center">
+                        翻阅笔记 
+                        <span class="ml-1.5 transform transition-transform group-hover:translate-x-1">→</span>
+                    </span>
                 </div>
             </a>
         </div>
 
-        <!-- ===== 我的原创 ===== -->
-        <div class="flex items-center justify-between mb-4">
-            <span class="section-title">📝 我的原创</span>
-            <span class="text-xs text-gray-600 bg-white/30 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/30">最新</span>
-        </div>
-        
-        <div class="original-card">
-            <div>
-                <div class="latest-badge">
-                    🔥 最新
-                </div>
-                <div class="post-title">从404到yushao.me</div>
-                <div class="post-desc">博客折腾日记 · 绿锁亮了</div>
+        <!-- 轮播照片区域 - 10张照片，3.5秒切换，完整Raw直链 -->
+<div class="w-full mb-16 bg-white rounded-2xl border border-gray-200/80 p-2 relative" style="height: 400px;">
+    <!-- 照片1 -->
+    <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/1.jpg" 
+         alt="储藏室1" 
+         class="carousel-item absolute inset-0 w-full h-full object-contain rounded-xl p-2 opacity-0">
+    
+    <!-- 照片2 -->
+    <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/2.jpg" 
+         alt="储藏室2" 
+         class="carousel-item absolute inset-0 w-full h-full object-contain rounded-xl p-2 opacity-0">
+    
+    <!-- 照片3 -->
+    <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/3.jpg" 
+         alt="储藏室3" 
+         class="carousel-item absolute inset-0 w-full h-full object-contain rounded-xl p-2 opacity-0">
+    
+    <!-- 照片4 -->
+    <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/4.jpg" 
+         alt="储藏室4" 
+         class="carousel-item absolute inset-0 w-full h-full object-contain rounded-xl p-2 opacity-0">
+    
+    <!-- 照片5 -->
+    <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/5.jpg" 
+         alt="储藏室5" 
+         class="carousel-item absolute inset-0 w-full h-full object-contain rounded-xl p-2 opacity-0">
+    
+    <!-- 照片6 -->
+    <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/6.jpg" 
+         alt="储藏室6" 
+         class="carousel-item absolute inset-0 w-full h-full object-contain rounded-xl p-2 opacity-0">
+    
+    <!-- 照片7 -->
+    <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/7.jpg" 
+         alt="储藏室7" 
+         class="carousel-item absolute inset-0 w-full h-full object-contain rounded-xl p-2 opacity-0">
+    
+    <!-- 照片8 -->
+    <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/8.jpg" 
+         alt="储藏室8" 
+         class="carousel-item absolute inset-0 w-full h-full object-contain rounded-xl p-2 opacity-0">
+    
+    <!-- 照片9 -->
+    <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/9.jpg" 
+         alt="储藏室9" 
+         class="carousel-item absolute inset-0 w-full h-full object-contain rounded-xl p-2 opacity-0">
+    
+    <!-- 照片10 -->
+    <img src="https://raw.githubusercontent.com/Eason-Eternity/Eason-Eternity.github.io/main/10.jpg" 
+         alt="储藏室10" 
+         class="carousel-item absolute inset-0 w-full h-full object-contain rounded-xl p-2 opacity-0">
+</div>
+
+        <!-- 底部信息 -->
+        <div class="border-t border-gray-200/70 pt-8">
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs">
+                <span class="text-gray-800 font-medium">字少</span>
+                <span class="text-gray-300">/</span>
+                <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors">yushao.me</a>
+                <span class="text-gray-300">/</span>
+                <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors">RSS</a>
+                <span class="text-gray-300">/</span>
+                <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors">GitHub</a>
+                <span class="text-gray-300">/</span>
+                <span class="text-emerald-600 font-medium flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    证书有效
+                </span>
             </div>
-            <a href="https://www.yushao.me/blog-404-to-yushao.html" 
-               class="read-btn">
-                阅读 →
-            </a>
-        </div>
-
-        <!-- ===== 加入社群 ===== -->
-        <div class="flex items-center justify-between mb-4 mt-8">
-            <span class="section-title">💬 社群</span>
-        </div>
-        
-        <div class="community-card">
-            <div class="flex items-center gap-3.5">
-                <div class="icon-box text-xl">💬</div>
-                <div>
-                    <div class="font-semibold" style="color: #2c3e50;">加入QQ频道</div>
-                    <div class="text-xs" style="color: #5a6a7a;">技术交流 · 每日分享</div>
-                </div>
-            </div>
-            <a href="https://pd.qq.com/s/9czm8o309?b=9" target="_blank" class="btn-soft">
-                马上加入 →
-            </a>
-        </div>
-
-        <!-- ===== 分隔线 ===== -->
-        <div class="divider"></div>
-
-        <!-- ===== 页脚 ===== -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5">
-            <a href="#" class="footer-item">© 宇少</a>
-            <a href="#" class="footer-item">🔗 yushao.me</a>
-            <a href="#" class="footer-item">📡 RSS</a>
-            <a href="#" class="footer-item">🐙 GitHub</a>
-            <a href="#" class="footer-item">🔒 证书有效</a>
-        </div>
-        
-        <!-- ===== 版权 ===== -->
-        <div class="text-center">
-            <div class="copyright">
-                ✦ 宇少的数字花园 · 2026 ✦
+            <div class="text-center mt-6">
+                <span class="text-[0.7rem] text-gray-400 tracking-[0.2em] uppercase">
+                    ✦ 宇少的数字花园 · 2026 ✦
+                </span>
             </div>
         </div>
-        
-        <div class="h-12"></div>
     </div>
 </body>
 </html>
