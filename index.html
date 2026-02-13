@@ -38,6 +38,20 @@
         
         @media (max-width: 640px) {
             .carousel-height { height: 240px !important; }
+            /* 手机版入口卡片居中 */
+            .entry-card {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                padding: 1rem 0 !important;
+            }
+            .entry-card .flex {
+                justify-content: center !important;
+            }
+            .entry-card .gap-3 {
+                justify-content: center !important;
+            }
         }
         @media (min-width: 641px) {
             .carousel-height { height: 400px !important; }
@@ -74,33 +88,33 @@
         <!-- 方案B的极简线条分隔 -->
         <div class="divider mb-10"></div>
 
-        <!-- 两大入口 - 方案B的纯文字卡片风格，无背景 -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-16">
+        <!-- 两大入口 - 手机版居中显示 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-16">
             <!-- 下载区 -->
-            <a href="download.html" class="group block py-4">
-                <div class="flex items-center gap-3 mb-2">
+            <a href="download.html" class="group block py-3 sm:py-4 entry-card">
+                <div class="flex items-center gap-3 mb-2 sm:justify-start justify-center">
                     <span class="text-3xl">📦</span>
                     <div>
                         <span class="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors">下载区</span>
                         <span class="ml-2 text-xs bg-gray-100 px-2 py-0.5 rounded-full text-gray-600">24个资源</span>
                     </div>
                 </div>
-                <p class="text-sm text-gray-500 mb-2">网盘·工具·直链</p>
-                <span class="text-xs text-gray-400 group-hover:text-gray-600 flex items-center">
+                <p class="text-sm text-gray-500 mb-2 text-center sm:text-left">网盘·工具·直链</p>
+                <span class="text-xs text-gray-400 group-hover:text-gray-600 flex items-center justify-center sm:justify-start">
                     进入储藏格 →
                 </span>
             </a>
             <!-- 更新公告 -->
-            <a href="notice.html" class="group block py-4">
-                <div class="flex items-center gap-3 mb-2">
+            <a href="notice.html" class="group block py-3 sm:py-4 entry-card">
+                <div class="flex items-center gap-3 mb-2 sm:justify-start justify-center">
                     <span class="text-3xl">📋</span>
                     <div>
                         <span class="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors">更新公告</span>
                         <span class="ml-2 text-xs bg-amber-50 px-2 py-0.5 rounded-full text-amber-600">4条新</span>
                     </div>
                 </div>
-                <p class="text-sm text-gray-500 mb-2">动态·折腾·记录</p>
-                <span class="text-xs text-gray-400 group-hover:text-gray-600 flex items-center">
+                <p class="text-sm text-gray-500 mb-2 text-center sm:text-left">动态·折腾·记录</p>
+                <span class="text-xs text-gray-400 group-hover:text-gray-600 flex items-center justify-center sm:justify-start">
                     翻阅笔记 →
                 </span>
             </a>
