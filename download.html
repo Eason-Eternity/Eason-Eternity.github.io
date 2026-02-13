@@ -12,13 +12,10 @@
             background: #f5f7fa;
         }
         
-        .article-container {
+        .container {
             max-width: 680px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
         
         .back-link {
@@ -36,238 +33,255 @@
             color: #2563eb;
         }
         
-        .article-title {
-            font-size: 2.2rem;
+        .page-title {
+            font-size: 2rem;
             font-weight: 700;
-            letter-spacing: -0.01em;
             color: #0f172a;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
         }
         
-        .article-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .page-desc {
             color: #64748b;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
             padding-bottom: 1.5rem;
             border-bottom: 1px solid #e2e8f0;
-            margin-bottom: 2rem;
-        }
-        
-        .article-content {
-            color: #334155;
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-        
-        .article-content p {
-            margin-bottom: 1.2rem;
-        }
-        
-        .article-content ul {
-            margin-bottom: 1.2rem;
-            padding-left: 1.2rem;
-            list-style-type: none;
-        }
-        
-        .article-content li {
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-            color: #334155;
-        }
-        
-        .article-content li::before {
-            content: "·";
-            color: #2563eb;
-            font-weight: bold;
-            margin-right: 0.5rem;
         }
         
         .download-item {
-            background: #f8fafc;
+            background: white;
             border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 1.25rem;
+            border-radius: 20px;
+            padding: 1.5rem;
             margin-bottom: 1rem;
             transition: all 0.2s;
         }
         
         .download-item:hover {
             border-color: #94a3b8;
-            background: #f1f5f9;
+            box-shadow: 0 8px 20px -8px rgba(0,0,0,0.08);
         }
         
-        .download-title {
-            font-size: 1.2rem;
+        .item-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .item-icon {
+            font-size: 2rem;
+        }
+        
+        .item-title {
+            font-size: 1.25rem;
             font-weight: 600;
             color: #0f172a;
-            margin-bottom: 0.5rem;
         }
         
-        .download-desc {
+        .item-desc {
             color: #64748b;
             font-size: 0.9rem;
             margin-bottom: 1rem;
+            line-height: 1.5;
         }
         
-        .download-tags {
+        .item-tags {
             display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
         }
         
-        .download-tag {
-            background: #ffffff;
+        .tag {
+            background: #f1f5f9;
             color: #475569;
             padding: 0.25rem 0.75rem;
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 500;
-            border: 1px solid #e2e8f0;
         }
         
-        .download-link {
+        .download-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            color: #2563eb;
-            font-size: 0.9rem;
-            font-weight: 500;
+            justify-content: space-between;
+            width: 100%;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 0.75rem 1.25rem;
             text-decoration: none;
+            color: #0f172a;
+            transition: all 0.2s;
         }
         
-        .download-link:hover {
-            color: #1d4ed8;
-            gap: 0.75rem;
+        .download-btn:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: white;
+        }
+        
+        .btn-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .update-time {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #10b981;
+            border-radius: 50%;
+            display: inline-block;
         }
         
         @media (max-width: 640px) {
-            .article-container {
-                padding: 1.5rem 1.25rem;
-                border-radius: 20px;
-            }
-            .article-title {
-                font-size: 1.8rem;
-            }
+            .container { padding: 1.5rem 1.25rem; }
+            .page-title { font-size: 1.75rem; }
+            .download-item { padding: 1.25rem; }
         }
     </style>
 </head>
-<body class="flex items-start justify-center min-h-screen p-4">
-    <div class="w-full max-w-2xl">
-        <!-- 返回首页链接 -->
-        <a href="https://www.yushao.me" class="back-link">
+<body>
+    <div class="container">
+        <!-- 返回储藏室 -->
+        <a href="index.html" class="back-link">
             ← 返回储藏室
         </a>
         
-        <!-- 下载区文章 -->
-        <article class="article-container">
-            <h1 class="article-title">📦 下载区 · 资源合集</h1>
-            
-            <div class="article-meta">
-                <span>2026.02.12</span>
-                <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
-                <span>24个资源</span>
-                <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
-                <span>每日更新</span>
+        <!-- 页面标题 -->
+        <h1 class="page-title">📦 下载区</h1>
+        <div class="page-desc">
+            网盘工具 · 下载脚本 · 直链资源 · 每日更新
+        </div>
+        
+        <!-- 梯子冲浪工具（保留原样） -->
+        <div class="download-item">
+            <div class="item-header">
+                <span class="item-icon">🌊</span>
+                <span class="item-title">梯子冲浪工具 v2.3.0</span>
             </div>
-            
-            <div class="article-content">
-                <p>这里收集了常用的网盘工具、下载脚本和资源直链，全部经过测试，每日更新。</p>
-                
-                <!-- 梯子冲浪工具 -->
-                <div class="download-item">
-                    <div class="download-title">🌊 梯子冲浪工具 v2.3.0</div>
-                    <div class="download-desc">稳定 · 高速 · 不限设备 · </div>
-                    <div class="download-tags">
-                        <span class="download-tag">Windows</span>
-                        <span class="download-tag">Mac</span>
-                        <span class="download-tag">Android</span>
-                        <span class="download-tag">iOS</span>
-                    </div>
-                    <a href="#" class="download-link">
-                        下载地址 → 
-                        <span class="text-xs text-gray-500">(直链/不限速)</span>
-                    </a>
-                </div>
-                
-                <!-- UC网盘 -->
-                <div class="download-item">
-                    <div class="download-title">📦 UC网盘 · 批量下载脚本</div>
-                    <div class="download-desc">支持文件夹批量下载，突破单文件限制，免客户端</div>
-                    <div class="download-tags">
-                        <span class="download-tag">油猴脚本</span>
-                        <span class="download-tag">PC</span>
-                        <span class="download-tag">2026.02.11</span>
-                    </div>
-                    <a href="#" class="download-link">
-                        安装脚本 →
-                        <span class="text-xs text-gray-500">(支持Chrome/Edge)</span>
-                    </a>
-                </div>
-                
-                <!-- 夸克网盘 -->
-                <div class="download-item">
-                    <div class="download-title">☁️ 夸克网盘 · 在线解压修复版</div>
-                    <div class="download-desc">已修复在线解压失败问题，支持4GB以内文件直接预览</div>
-                    <div class="download-tags">
-                        <span class="download-tag">网页端</span>
-                        <span class="download-tag">APP</span>
-                        <span class="download-tag">修复</span>
-                    </div>
-                    <a href="#" class="download-link">
-                        提取码 →
-                        <span class="text-xs text-gray-500">(4a67f4)</span>
-                    </a>
-                </div>
-                
-                <!-- 百度下载 -->
-                <div class="download-item">
-                    <div class="download-title">🗂️ 百度网盘 · 提速脚本 v3.2</div>
-                    <div class="download-desc">适配最新版浏览器，满速下载，支持大文件批量转存</div>
-                    <div class="download-tags">
-                        <span class="download-tag">油猴</span>
-                        <span class="download-tag">高速通道</span>
-                        <span class="download-tag">2026.02.09</span>
-                    </div>
-                    <a href="#" class="download-link">
-                        获取脚本 →
-                        <span class="text-xs text-gray-500">(需安装Tampermonkey)</span>
-                    </a>
-                </div>
-                
-                <!-- 迅雷下载 -->
-                <div class="download-item">
-                    <div class="download-title">⚡ 迅雷下载 · 敏感资源通道</div>
-                    <div class="download-desc">支持磁力/种子/电驴，敏感资源专用加速节点</div>
-                    <div class="download-tags">
-                        <span class="download-tag">BT</span>
-                        <span class="download-tag">敏感资源</span>
-                        <span class="download-tag">离线</span>
-                    </div>
-                    <a href="#" class="download-link">
-                        加速通道 →
-                        <span class="text-xs text-gray-500">(需更新至最新版)</span>
-                    </a>
-                </div>
-                
-                <p class="mt-6 text-sm text-gray-500 border-t border-gray-200 pt-4">
-                    ⚠️ 所有资源均为网络收集，请遵守当地法律法规。如链接失效，请通过底部邮箱反馈。
-                </p>
-                
-                <p class="mt-4 text-sm text-gray-600 flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                    今日已更新 3 个资源 · 上次检查 2026.02.12 18:00
-                </p>
-                
-                <p class="mt-8 pt-4 border-t border-gray-200 text-sm text-gray-500">
-                    —— 宇少 · 下载区维护日志 2026.02.12
-                </p>
+            <div class="item-desc">
+                稳定 · 高速 · 不限设备 · 新增香港/新加坡/日本节点，4K解锁，团队使用首选。
             </div>
-        </article>
+            <div class="item-tags">
+                <span class="tag">Windows</span>
+                <span class="tag">Mac</span>
+                <span class="tag">Android</span>
+                <span class="tag">iOS</span>
+                <span class="tag">全平台</span>
+            </div>
+            <a href="https://www.nfsq.us/#/register?code=Msqx2m4g" target="_blank" class="download-btn">
+                <span class="btn-left">
+                    <span>⬇️ 下载地址</span>
+                </span>
+                <span class="btn-note">官方直链 · 不限速 →</span>
+            </a>
+        </div>
+        
+        <!-- UC网盘下载 -->
+        <div class="download-item">
+            <div class="item-header">
+                <span class="item-icon">📦</span>
+                <span class="item-title">UC网盘下载</span>
+            </div>
+            <div class="item-desc">
+                大文件 · 不限速 · 无需会员
+            </div>
+            <div class="item-tags">
+                <span class="tag">直链</span>
+                <span class="tag">2026.02.13</span>
+            </div>
+            <a href="https://drive.uc.cn/s/8df281ec6dd54?public=1" target="_blank" class="download-btn">
+                <span class="btn-left">
+                    <span>📥 点击下载</span>
+                </span>
+                <span class="btn-note">→</span>
+            </a>
+        </div>
+        
+        <!-- 夸克网盘下载 -->
+        <div class="download-item">
+            <div class="item-header">
+                <span class="item-icon">☁️</span>
+                <span class="item-title">夸克网盘下载</span>
+            </div>
+            <div class="item-desc">
+                资源同步 · 在线解压
+            </div>
+            <div class="item-tags">
+                <span class="tag">直链</span>
+                <span class="tag">2026.02.13</span>
+            </div>
+            <a href="https://pan.quark.cn/s/4a67f42952f3" target="_blank" class="download-btn">
+                <span class="btn-left">
+                    <span>📥 点击下载</span>
+                </span>
+                <span class="btn-note">→</span>
+            </a>
+        </div>
+        
+        <!-- 百度网盘下载 -->
+        <div class="download-item">
+            <div class="item-header">
+                <span class="item-icon">🗂️</span>
+                <span class="item-title">百度网盘下载</span>
+            </div>
+            <div class="item-desc">
+                网盘直链 · 提速脚本
+            </div>
+            <div class="item-tags">
+                <span class="tag">直链</span>
+                <span class="tag">2026.02.13</span>
+            </div>
+            <a href="https://pan.baidu.com/s/1YRSttwYqv3smFsTSql4u5A?pwd=42fy" target="_blank" class="download-btn">
+                <span class="btn-left">
+                    <span>📥 点击下载</span>
+                </span>
+                <span class="btn-note">→</span>
+            </a>
+        </div>
+        
+        <!-- 迅雷下载 -->
+        <div class="download-item">
+            <div class="item-header">
+                <span class="item-icon">⚡</span>
+                <span class="item-title">迅雷下载</span>
+            </div>
+            <div class="item-desc">
+                磁力 · 种子 · 敏感资源
+            </div>
+            <div class="item-tags">
+                <span class="tag">直链</span>
+                <span class="tag">2026.02.13</span>
+            </div>
+            <a href="https://pan.xunlei.com/s/VONV1pd7HvwnZNMYqmDDTcRQA1?pwd=fnux#" target="_blank" class="download-btn">
+                <span class="btn-left">
+                    <span>📥 点击下载</span>
+                </span>
+                <span class="btn-note">→</span>
+            </a>
+        </div>
+        
+        <!-- 更新状态 -->
+        <div class="update-time">
+            <span class="dot"></span>
+            <span>上次更新: 2026.02.13 12:30 · 今日已同步 5 个资源</span>
+        </div>
     </div>
 </body>
 </html>
