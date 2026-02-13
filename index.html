@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>宇少 · 储藏室</title>
+    <title>宇少 · 数字网</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { 
             font-family: 'Inter', sans-serif;
-            background: #f5f7fa;
+            background: #fafafa;
         }
         
-        /* 轮播动画 - 10张照片，每张3秒，总时长30秒 */
+        /* 无框主义 - 只有线条和留白 */
+        .divider {
+            border-bottom: 1px solid #eaeef2;
+            margin: 1.5rem 0;
+        }
+        
+        /* 轮播动画 */
         @keyframes slide {
             0%, 8% { opacity: 1; }
             9%, 97% { opacity: 0; }
             100% { opacity: 1; }
         }
-        
-        .carousel-item {
-            animation: slide 30s infinite;
-        }
-        
+        .carousel-item { animation: slide 30s infinite; }
         .carousel-item:nth-child(1) { animation-delay: 0s; }
         .carousel-item:nth-child(2) { animation-delay: 3s; }
         .carousel-item:nth-child(3) { animation-delay: 6s; }
@@ -34,178 +36,132 @@
         .carousel-item:nth-child(9) { animation-delay: 24s; }
         .carousel-item:nth-child(10) { animation-delay: 27s; }
         
-        /* 手机版优化 */
         @media (max-width: 640px) {
-            .mobile-stack {
-                flex-direction: column !important;
-            }
-            .mobile-card {
-                padding: 1.25rem !important;
-            }
-            .mobile-icon {
-                font-size: 2.5rem !important;
-            }
-            .mobile-title {
-                font-size: 1.25rem !important;
-            }
-            .mobile-badge {
-                padding: 0.2rem 0.8rem !important;
-                font-size: 0.65rem !important;
-            }
-            .mobile-text {
-                font-size: 0.75rem !important;
-            }
-            h1 {
-                font-size: 2.5rem !important;
-            }
-            .carousel-height {
-                height: 240px !important;
-            }
-            .footer-gap {
-                gap: 0.75rem !important;
-            }
-            .footer-text {
-                font-size: 0.65rem !important;
-            }
-            .copyright-text {
-                font-size: 0.55rem !important;
-            }
+            .carousel-height { height: 240px !important; }
+        }
+        @media (min-width: 641px) {
+            .carousel-height { height: 400px !important; }
         }
         
-        @media (min-width: 641px) {
-            .carousel-height {
-                height: 400px !important;
-            }
+        /* 极简链接 */
+        .nav-link {
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #0f172a;
         }
     </style>
 </head>
-<body class="flex items-start justify-center min-h-screen p-3 sm:p-4">
-    <div class="max-w-5xl w-full">
-        <!-- 简洁标志区 -->
-        <div class="text-center mb-12 sm:mb-16">
-            <div class="inline-block px-3 py-1 sm:px-4 sm:py-1 bg-black/5 backdrop-blur-sm rounded-full text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">
+<body class="flex items-start justify-center min-h-screen p-0">
+    <div class="max-w-4xl w-full px-4 sm:px-6 py-0 sm:py-0">
+        <!-- 头部全景图 - 向上移动，消除顶部留白 -->
+        <div class="w-screen relative left-1/2 right-1/2 -mx-[50vw] -mt-8 sm:-mt-12 mb-8 sm:mb-12" style="width: 100vw;">
+            <img src="https://s41.ax1x.com/2026/02/13/pZqleUJ.jpg" 
+                 alt="全景图" 
+                 class="w-full h-auto object-cover" style="max-height: 300px; object-position: center 20%;">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#fafafa] pointer-events-none"></div>
+        </div>
+
+        <!-- 今日更新标签 - 放在图片下方 -->
+        <div class="text-center -mt-8 mb-8 relative z-10">
+            <div class="inline-block px-3 py-1 bg-black/5 backdrop-blur-sm rounded-full text-xs sm:text-sm text-gray-600">
                 ⚡ 今日更新
             </div>
-            <h1 class="text-4xl sm:text-5xl font-light tracking-tight text-gray-900 mb-2 sm:mb-3">
-                宇少的<span class="font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">下载网</span>
-            </h1>
-            <p class="text-sm sm:text-base text-gray-500 tracking-wide">
-                收集一些有用的东西
-            </p>
         </div>
 
-        <!-- 两大入口卡片 - 手机版竖排，电脑版横排 -->
-        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-6 sm:mb-8 w-full mobile-stack">
-            <!-- 下载区 - 跳转到 download.html -->
-            <a href="download.html" class="group flex-1 bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 transition-all duration-300 hover:shadow-xl border border-gray-100/80 hover:border-gray-200 flex flex-col mobile-card">
-                <div class="flex items-center justify-between w-full mb-3 sm:mb-4">
-                    <div class="flex items-center gap-2 sm:gap-3">
-                        <span class="text-4xl sm:text-5xl transform transition-transform group-hover:scale-110 mobile-icon">📦</span>
-                        <span class="text-xl sm:text-2xl font-semibold text-gray-800 group-hover:text-gray-900 mobile-title">下载区</span>
-                    </div>
-                    <span class="text-xs font-medium px-2 py-1 sm:px-3 sm:py-1.5 bg-gray-100 text-gray-600 rounded-full mobile-badge">24个资源</span>
-                </div>
-                <div class="flex items-center justify-between w-full mt-0 sm:mt-1">
-                    <span class="text-xs sm:text-sm text-gray-500 mobile-text">网盘·工具·直链</span>
-                    <span class="text-xs sm:text-sm font-medium text-gray-700 group-hover:text-gray-900 flex items-center">
-                        进入储藏格 
-                        <span class="ml-1 sm:ml-1.5 transform transition-transform group-hover:translate-x-1">→</span>
-                    </span>
-                </div>
-            </a>
+        <!-- 方案B的极简线条分隔 -->
+        <div class="divider mb-10"></div>
 
-            <!-- 更新公告 - 跳转到 notice.html -->
-            <a href="notice.html" class="group flex-1 bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 transition-all duration-300 hover:shadow-xl border border-gray-100/80 hover:border-gray-200 flex flex-col mobile-card">
-                <div class="flex items-center justify-between w-full mb-3 sm:mb-4">
-                    <div class="flex items-center gap-2 sm:gap-3">
-                        <span class="text-4xl sm:text-5xl transform transition-transform group-hover:scale-110 mobile-icon">📋</span>
-                        <span class="text-xl sm:text-2xl font-semibold text-gray-800 group-hover:text-gray-900 mobile-title">更新公告</span>
+        <!-- 两大入口 - 方案B的纯文字卡片风格，无背景 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-16">
+            <!-- 下载区 -->
+            <a href="download.html" class="group block py-4">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="text-3xl">📦</span>
+                    <div>
+                        <span class="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors">下载区</span>
+                        <span class="ml-2 text-xs bg-gray-100 px-2 py-0.5 rounded-full text-gray-600">24个资源</span>
                     </div>
-                    <span class="text-xs font-medium px-2 py-1 sm:px-3 sm:py-1.5 bg-amber-50 text-amber-600 rounded-full mobile-badge">4条新</span>
                 </div>
-                <div class="flex items-center justify-between w-full mt-0 sm:mt-1">
-                    <span class="text-xs sm:text-sm text-gray-500 mobile-text">动态·折腾·记录</span>
-                    <span class="text-xs sm:text-sm font-medium text-gray-700 group-hover:text-gray-900 flex items-center">
-                        翻阅笔记 
-                        <span class="ml-1 sm:ml-1.5 transform transition-transform group-hover:translate-x-1">→</span>
-                    </span>
+                <p class="text-sm text-gray-500 mb-2">网盘·工具·直链</p>
+                <span class="text-xs text-gray-400 group-hover:text-gray-600 flex items-center">
+                    进入储藏格 →
+                </span>
+            </a>
+            <!-- 更新公告 -->
+            <a href="notice.html" class="group block py-4">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="text-3xl">📋</span>
+                    <div>
+                        <span class="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors">更新公告</span>
+                        <span class="ml-2 text-xs bg-amber-50 px-2 py-0.5 rounded-full text-amber-600">4条新</span>
+                    </div>
                 </div>
+                <p class="text-sm text-gray-500 mb-2">动态·折腾·记录</p>
+                <span class="text-xs text-gray-400 group-hover:text-gray-600 flex items-center">
+                    翻阅笔记 →
+                </span>
             </a>
         </div>
 
-        <!-- 轮播照片区域 - 10张照片，每张3秒切换，无白色背景框 -->
-        <div class="w-full mb-12 sm:mb-16 relative carousel-height" style="height: 400px;">
-            <!-- 照片1 -->
-            <img src="https://s41.ax1x.com/2026/02/12/pZbXa1f.jpg" 
-                 alt="储藏室1" 
-                 class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
-            
-            <!-- 照片2 -->
-            <img src="https://s41.ax1x.com/2026/02/12/pZbja5R.jpg" 
-                 alt="储藏室2" 
-                 class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
-            
-            <!-- 照片3 -->
-            <img src="https://s41.ax1x.com/2026/02/12/pZbj08x.jpg" 
-                 alt="储藏室3" 
-                 class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
-            
-            <!-- 照片4 -->
-            <img src="https://s41.ax1x.com/2026/02/12/pZbjsKO.jpg" 
-                 alt="储藏室4" 
-                 class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
-            
-            <!-- 照片5 -->
-            <img src="https://s41.ax1x.com/2026/02/12/pZbj2ad.jpg" 
-                 alt="储藏室5" 
-                 class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
-            
-            <!-- 照片6 -->
-            <img src="https://s41.ax1x.com/2026/02/12/pZbj4RP.jpg" 
-                 alt="储藏室6" 
-                 class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
-            
-            <!-- 照片7 -->
-            <img src="https://s41.ax1x.com/2026/02/12/pZbj5xf.jpg" 
-                 alt="储藏室7" 
-                 class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
-            
-            <!-- 照片8 -->
-            <img src="https://s41.ax1x.com/2026/02/12/pZbXa1f.jpg" 
-                 alt="储藏室8" 
-                 class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
-            
-            <!-- 照片9 -->
-            <img src="https://s41.ax1x.com/2026/02/12/pZbja5R.jpg" 
-                 alt="储藏室9" 
-                 class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
-            
-            <!-- 照片10 -->
-            <img src="https://s41.ax1x.com/2026/02/12/pZbj08x.jpg" 
-                 alt="储藏室10" 
-                 class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+        <!-- 方案B的极简线条分隔 -->
+        <div class="divider mb-10"></div>
+
+        <!-- 轮播 - 无框，直接悬浮 -->
+        <div class="mb-16">
+            <div class="relative carousel-height w-full" style="height: 400px;">
+                <img src="https://s41.ax1x.com/2026/02/12/pZbXa1f.jpg" class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+                <img src="https://s41.ax1x.com/2026/02/12/pZbja5R.jpg" class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+                <img src="https://s41.ax1x.com/2026/02/12/pZbj08x.jpg" class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+                <img src="https://s41.ax1x.com/2026/02/12/pZbjsKO.jpg" class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+                <img src="https://s41.ax1x.com/2026/02/12/pZbj2ad.jpg" class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+                <img src="https://s41.ax1x.com/2026/02/12/pZbj4RP.jpg" class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+                <img src="https://s41.ax1x.com/2026/02/12/pZbj5xf.jpg" class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+                <img src="https://s41.ax1x.com/2026/02/12/pZbXa1f.jpg" class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+                <img src="https://s41.ax1x.com/2026/02/12/pZbja5R.jpg" class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+                <img src="https://s41.ax1x.com/2026/02/12/pZbj08x.jpg" class="carousel-item absolute inset-0 w-full h-full object-contain opacity-0">
+            </div>
+            <div class="divider mt-8"></div>
         </div>
 
-        <!-- 底部信息 -->
-        <div class="border-t border-gray-200/70 pt-6 sm:pt-8">
-            <div class="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs footer-gap">
-                <span class="text-gray-800 font-medium">宇少</span>
+        <!-- 底部 - 极简线条 -->
+        <div class="pt-4">
+            <!-- 联系 - 无卡片，纯文字 -->
+            <div class="text-center mb-6">
+                <div class="text-xs text-gray-400 mb-1">联系我的邮箱</div>
+                <div class="flex items-center justify-center gap-3">
+                    <span class="text-sm sm:text-base text-gray-600">lxy_3621@163.com</span>
+                    <a href="mailto:lxy_3621@163.com" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full transition-colors">添加</a>
+                </div>
+                <div class="text-xs text-gray-400 mt-2">有问题请第一时间联系我们</div>
+            </div>
+            
+            <div class="text-center text-xs text-gray-400 mb-5">侵权联系删除！</div>
+            
+            <!-- 站点链接 -->
+            <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs mb-3">
+                <a href="#" class="nav-link">字少</a>
                 <span class="text-gray-300">/</span>
-                <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors footer-text">yushao.me</a>
+                <a href="#" class="nav-link">yushao.me</a>
                 <span class="text-gray-300">/</span>
-                <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors footer-text">RSS</a>
+                <a href="#" class="nav-link">RSS</a>
                 <span class="text-gray-300">/</span>
-                <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors footer-text">GitHub</a>
+                <a href="#" class="nav-link">GitHub</a>
                 <span class="text-gray-300">/</span>
-                <span class="text-emerald-600 font-medium flex items-center gap-1 footer-text">
-                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
-                    证书有效
+                <span class="text-emerald-600 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>证书有效
                 </span>
             </div>
-            <div class="text-center mt-4 sm:mt-6">
-                <span class="text-[0.6rem] sm:text-[0.7rem] text-gray-400 tracking-[0.2em] uppercase copyright-text">
-                    ✦ 侵权联系邮箱lxy_3621@163.com · 2026 ✦
-                </span>
+            
+            <!-- 版权 -->
+            <div class="text-center mt-6 pt-4 border-t border-gray-100">
+                <span class="text-[0.6rem] text-gray-400 tracking-wider">✦ 宇少的数字网站 · 2026 ✦</span>
+            </div>
+            <!-- Credit -->
+            <div class="text-center mt-1">
+                <span class="text-[0.55rem] text-gray-300">Design by DeepSeek · 宇少</span>
             </div>
         </div>
     </div>
