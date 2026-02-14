@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新日志 · 宇少数字网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: #0f1113;
+        }
+        
+        .log-card {
+            background: rgba(255, 255, 255, 0.38);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 28px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .back-link {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: white;
+        }
+        
+        .log-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .log-date {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            min-width: 80px;
+        }
+        
+        .log-text {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="log-card">
+        <a href="index.html" class="back-link text-sm mb-6 inline-block">← 返回首页</a>
+        
+        <h1 class="text-3xl font-bold text-white mb-6">📋 更新日志</h1>
+        
+        <div class="log-item">
+            <span class="log-date">2026.02.14</span>
+            <span class="log-text">加入「关于」页面；浏览器头像换成自己的照片</span>
+        </div>
+        
+        <div class="log-item">
+            <span class="log-date">2026.02.13</span>
+            <span class="log-text">毛玻璃卡片透明度调至 0.38；缩小卡片尺寸；加入双背景图</span>
+        </div>
+        
+        <div class="log-item">
+            <span class="log-date">2026.02.12</span>
+            <span class="log-text">网站上线；加入下载区、更新公告；绑定 yushao.me</span>
+        </div>
+        
+        <div class="mt-6 text-white/50 text-xs text-center">
+            ✦ 记给自己看 ✦
+        </div>
+    </div>
+</body>
+</html>
