@@ -45,17 +45,21 @@ def check_link(name, url):
             'Connection': 'keep-alive',
         }
         print(f"正在检查: {name}")
-        
-        # 特殊处理迅雷
-        if "xunlei.com" in url:
-            return check_xunlei_special(name, url, headers)
-        
-        # 判断是否在白名单
-        is_whitelist = False
-        for domain in WHITELIST_DOMAINS:
-            if domain in url and domain != "xunlei.com":  # 迅雷已单独处理
-                is_whitelist = True
-                break
+
+# 特殊处理夸克
+if "quark.cn" in url:
+    return check_quark_special(name, url, headers)
+
+# 特殊处理迅雷
+if "xunlei.com" in url:
+    return check_xunlei_special(name, url, headers)
+
+# 判断是否在白名单
+is_whitelist = False
+for domain in WHITELIST_DOMAINS:
+    if domain in url and domain != "xunlei.com":  # 迅雷已单独处理
+        is_whitelist = True
+        break
         
         # 重试机制
         for i in range(3):
