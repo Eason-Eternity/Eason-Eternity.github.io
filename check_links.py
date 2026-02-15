@@ -34,8 +34,8 @@ WHITELIST_CODES = [403, 429, 503]
 
 def check_link(name, url):
     """
-    检查链接状态，返回 (等级, 原因)
-    等级: 'good' (正常), 'suspect' (可疑), 'bad' (失效)
+    检查链接状态，返回（等级、原因）
+    等级：'good'（正常）、'suspect'（可疑）、'bad'（失效）
     """
     try:
         headers = {
@@ -46,10 +46,14 @@ def check_link(name, url):
         }
         print(f"正在检查: {name}")
         
+        # 特殊处理迅雷
+        if "xunlei.com" in url:
+            return check_xunlei_special(name, url, headers)
+        
         # 判断是否在白名单
         is_whitelist = False
         for domain in WHITELIST_DOMAINS:
-            if domain in url:
+            if domain in url and domain != "xunlei.com":  # 迅雷已单独处理
                 is_whitelist = True
                 break
         
@@ -76,9 +80,7 @@ def check_link(name, url):
             return 'good', "正常"
         
         elif r.status_code in WHITELIST_CODES or is_whitelist:
-            # 白名单状态码或白名单域名
             return 'suspect', f"返回{r.status_code}，可能反爬，需人工确认"
-        
         else:
             return 'bad', f"HTTP {r.status_code}"
             
@@ -87,6 +89,50 @@ def check_link(name, url):
             return 'suspect', f"白名单域名异常: {str(e)}"
         else:
             return 'bad', f"异常: {str(e)}"
+
+def check_xunlei_special(name, url, headers):
+    """专门处理迅雷链接"""
+    try:
+        # 尝试用浏览器一样的头信息
+        headers.update({
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
+            'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120"',
+            'Sec-Ch-Ua-Mobile': '?0',
+            'Sec-Ch-Ua-Platform': '"Windows"',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            'Upgrade-Insecure-Requests': '1',
+        })
+        
+        # 重试3次
+        for i in range(3):
+            try:
+                r = requests.get(url, timeout=20, headers=headers, allow_redirects=True)
+                # 迅雷经常返回非200但实际可用，所以我们只看页面内容
+                text = r.text.lower()
+                
+                # 真正的失效关键词（迅雷特有的）
+                xunlei_dead_keywords = ["失效", "已取消", "不存在", "过期", "删除", "文件已删除"]
+                
+                for kw in xunlei_dead_keywords:
+                    if kw in text:
+                        return 'bad', f"页面包含失效关键词: {kw}"
+                
+                # 如果能走到这里，说明大概率可用
+                return 'good', "正常（忽略状态码）"
+                
+            except Exception as e:
+                if i == 2:
+                    return 'suspect', f"迅雷特殊处理仍失败: {str(e)}"
+                time.sleep(3)
+                
+    except Exception as e:
+        return 'suspect', f"迅雷检测异常: {str(e)}"
 
 def send_email(results):
     """发送邮件通知（区分等级）"""
