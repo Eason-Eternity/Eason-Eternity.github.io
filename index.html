@@ -1,73 +1,41 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宇少储藏室</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>宇少储藏室 · 关停</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { 
-            font-family: 'Inter', sans-serif;
-            background: #f5f7fa;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container { max-width: 680px; margin: 0 auto; padding: 2rem 1.5rem; }
-        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #64748b; text-decoration: none; margin-bottom: 2rem; }
-        .back-link:hover { color: #2563eb; }
-        .post-item { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 1.25rem; 
-            background: white; 
-            border-radius: 16px; 
-            border: 1px solid #e2e8f0; 
-            margin-bottom: 1rem;
-            transition: all 0.2s;
-            text-decoration: none;
-            color: inherit;
+        body {
+            background: #0f0f0f;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
         }
-        .post-item:hover { border-color: #94a3b8; background: #f8fafc; }
-        .post-title { font-size: 1.1rem; font-weight: 600; color: #0f172a; margin-bottom: 0.25rem; }
-        .post-meta { display: flex; gap: 1rem; color: #64748b; font-size: 0.75rem; }
-        .post-tag { background: #f1f5f9; padding: 0.2rem 0.6rem; border-radius: 30px; font-size: 0.65rem; }
-        .post-link { color: #2563eb; font-size: 0.8rem; font-weight: 500; }
-        footer { margin-top: 2rem; text-align: center; font-size: 0.75rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; }
+        .shutdown {
+            text-align: center;
+            color: #c0c0c0;
+            font-size: clamp(1.8rem, 8vw, 4rem);
+            font-weight: 300;
+            letter-spacing: 2px;
+            line-height: 2;
+        }
+        .shutdown p:first-child {
+            font-size: clamp(2rem, 10vw, 5rem);
+            font-weight: 500;
+        }
     </style>
 </head>
-<body class="p-4">
-    <div class="container">
-        <a href="index.html" class="back-link">← 返回首页</a>
-        <h1 class="text-3xl font-bold mb-6">📦 宇少储藏室</h1>
-
-        <!-- 公告列表 -->
-        <a href="blog-yasuka-update.html" class="post-item">
-            <div>
-                <div class="post-title">二月更新推迟 & 新路线预告</div>
-                <div class="post-meta">
-                    <span>2026.02.22</span>
-                    <span class="post-tag">🔥 最新</span>
-                    <span>更新公告</span>
-                </div>
-            </div>
-            <span class="post-link">阅读 →</span>
-        </a>
-
-        <a href="blog-404-to-yushao.html" class="post-item">
-            <div>
-                <div class="post-title">从404到yushao.me</div>
-                <div class="post-meta">
-                    <span>2026.02.12</span>
-                    <span class="post-tag">📌 置顶</span>
-                    <span>折腾日记</span>
-                </div>
-            </div>
-            <span class="post-link">阅读 →</span>
-        </a>
-
-        <footer>
-            <p>✦ 网站已归档 · 不再更新 ✦</p>
-        </footer>
+<body>
+    <div class="shutdown">
+        <p>该网站已关停</p>
+        <p>宇少 · 停更</p>
     </div>
 </body>
 </html>
